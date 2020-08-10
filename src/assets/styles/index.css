@@ -78,8 +78,10 @@ h1,h2,h3,h4,h5,h6,p {
   height: var(--nav-size);
   background-color: var(--primary-variant);
   padding: 0 1rem;
-  border-bottom: 1px solid var(--primary-accent-variant);
+  /*border-bottom: 1px solid var(--primary-accent-variant);*/
   transition: background 500ms ease-in-out, color 1000ms ease-in-out;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* <ul> */
