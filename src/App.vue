@@ -1,32 +1,34 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Navbar>
+      <NavItem icon="plus" />
+      <NavItem icon="bell" />
+      <NavItem :icon="icon" @click="toggleTheme" />
+      <NavItem icon="caret">
+        <DropdownMenu />
+      </NavItem>
+    </Navbar>
     <router-view />
   </div>
 </template>
 
+<script>
+  import Navbar from "./components/Navbar";
+  import NavItem from "./components/NavItem";
+  import DropdownMenu from "./components/DropdownMenu";
+  import { mapActions } from "vuex";
+  export default {
+    name: "App",
+    components: { DropdownMenu, NavItem, Navbar },
+    methods: mapActions(["toggleTheme"]),
+    computed: {
+      icon: function() {
+        return this.$store.state.colorTheme === "light" ? "moon" : "sun";
+      },
+    },
+  };
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  @import "./assets/styles/index.css";
 </style>
