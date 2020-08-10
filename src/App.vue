@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar>
+    <Navbar brand="Harry Books - Tienda Online">
       <NavItem icon="plus" />
       <NavItem icon="bell" />
       <NavItem :icon="icon" @click="toggleTheme" />
