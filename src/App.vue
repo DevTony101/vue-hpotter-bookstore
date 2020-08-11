@@ -2,9 +2,9 @@
   <div id="app">
     <Navbar brand="Harry Books - Tienda Online">
       <NavItem icon="cart" link="/cart" />
-      <NavItem icon="bell" :link="$router.currentRoute" />
-      <NavItem :icon="icon" :link="$router.currentRoute" @click="toggleTheme" />
-      <NavItem icon="caret" :link="$router.currentRoute">
+      <NavItem icon="bell" :link="this.$route.path" />
+      <NavItem :icon="icon" :link="this.$route.path" @click="toggleTheme" />
+      <NavItem icon="caret" :link="this.$route.path">
         <DropdownMenu />
       </NavItem>
     </Navbar>
