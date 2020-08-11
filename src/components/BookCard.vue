@@ -30,7 +30,7 @@
           <div class="quantity">
             <input v-model.number="quantity" type="number" min="1" max="9" />
           </div>
-          <BaseButton>
+          <BaseButton @click="add">
             <template>
               <BaseIcon class="icon" icon-name="cart-plus" />
               Agregar al Carrito
@@ -44,14 +44,31 @@
 
 <script>
   import BaseIcon from "./base/BaseIcon";
+  import { mapActions } from "vuex";
 
   export default {
     name: "BookCard",
     components: { BaseIcon },
+    props: {
+      id: {
+        type: String,
+        required: true,
+      },
+    },
     data: function() {
       return {
         quantity: 1,
       };
+    },
+    methods: {
+      ...mapActions("books", ["addToCart"]),
+      add: function() {
+        this.addToCart({
+          id: this.id,
+          name: "Harry Potter y la Piedra Filosofal",
+          quantity: this.quantity,
+        });
+      },
     },
   };
 </script>
