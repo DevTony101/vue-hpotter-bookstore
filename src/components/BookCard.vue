@@ -10,16 +10,15 @@
       />
     </div>
     <div class="book-info">
-      <h1>Harry Popotter y la Piedra Filosofal</h1>
+      <h1>Harry Potter y la Piedra Filosofal</h1>
       <p class="description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed nisi
-        sed velit rutrum cursus quis ac tellus. Nullam non leo at neque lobortis
-        consectetur. Vestibulum eu nisl ut augue ultricies ullamcorper. In et
-        dolor sit amet tortor tincidunt dapibus sed vel velit. Fusce eget odio
-        sollicitudin, venenatis elit eget, cursus dui. Vestibulum vel eleifend
-        eros. Nunc dolor sapien, tempus a massa ac, ornare sagittis neque.
-        Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas
-        velit orci, aliquet sed mattis in, lacinia a elit.
+        El día de su cumpleaños, Harry Potter descubre que es hijo de dos
+        conocidos hechiceros, de los que ha heredado poderes mágicos. Debe
+        asistir a una famosa escuela de magia y hechicería, donde entabla una
+        amistad con dos jóvenes que se convertirán en sus compañeros de
+        aventura. Durante su primer año en Hogwarts, descubre que un malévolo y
+        poderoso mago llamado Voldemort está en busca de una piedra filosofal
+        que alarga la vida de quien la posee.
       </p>
       <hr />
       <div class="purchase-info">
@@ -28,6 +27,9 @@
           <p>Precio: $58.000</p>
         </div>
         <div class="add-to-cart">
+          <div class="quantity">
+            <input v-model.number="quantity" type="number" min="1" max="9" />
+          </div>
           <BaseButton>
             <template>
               <BaseIcon class="icon" icon-name="cart-plus" />
@@ -46,6 +48,11 @@
   export default {
     name: "BookCard",
     components: { BaseIcon },
+    data: function() {
+      return {
+        quantity: 1,
+      };
+    },
   };
 </script>
 
@@ -86,5 +93,27 @@
 
   .add-to-cart {
     margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+  }
+
+  .quantity input {
+    transition: all 500ms ease-in-out;
+    width: 30px;
+    height: 50px;
+    line-height: 1.65;
+    float: left;
+    display: block;
+    margin: 0;
+    padding: 0 0 0 10px;
+    color: var(--text-color);
+    background-color: var(--primary-accent);
+    border: 1px solid var(--primary-variant);
+    border-radius: 6px;
+  }
+
+  .quantity input:focus {
+    outline: 0;
   }
 </style>
