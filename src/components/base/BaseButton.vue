@@ -85,4 +85,11 @@
     margin-right: 20px;
     fill: var(--text-color);
   }
+
+  .purchase-button {
+    width: 400px;
+    display: initial;
+    font-size: large;
+    font-weight: bolder;
+  }
 </style>
