@@ -9,11 +9,6 @@ body {
   transition: background 500ms ease-in-out, color 1000ms ease-in-out;
 }
 
-#app {
-  text-align: center;
-  color: #2c3e50;
-}
-
 :root {
   --nav-size: 60px;
   --border-radius: 8px;
