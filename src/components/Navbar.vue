@@ -22,12 +22,12 @@
 </script>
 
 <style scoped>
-  @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 
   .brand {
     font-size: xx-large;
     margin: auto 0;
-    font-family: "Lobster", cursive;
+    font-family: "Anton", sans-serif;
     color: var(--text-color);
   }
 </style>
