@@ -17,9 +17,15 @@ export const mutations = {
 };
 
 export const actions = {
-  addToCart: function({ commit }, book) {
+  addToCart: function({ commit, getters, dispatch }, book) {
     if (book) {
-      commit("ADD_TO_CART", book);
+      let aux = getters.getById(book.id);
+      if (aux) {
+        book.quantity += parseInt(aux.quantity);
+        dispatch("updateCart", book);
+      } else {
+        commit("ADD_TO_CART", book);
+      }
     }
   },
   removeFromCart: function({ state, commit }, book) {
@@ -31,7 +37,7 @@ export const actions = {
   updateCart: function({ state }, book) {
     if (book) {
       const index = state.cart.findIndex(e => e.id === book.id);
-      state[index] = { ...book };
+      state.cart[index] = { ...book };
     }
   },
   updateTotal: function({ state, commit }) {
