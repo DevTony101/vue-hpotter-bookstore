@@ -30,7 +30,8 @@
     justify-content: space-between;
     height: 52px;
     padding: 0 40px;
-    background: rgb(237, 110, 89);
+    background: var(--button-color);
+    color: var(--text-color);
     border: none;
     border-radius: 6px;
     text-align: center;
@@ -77,29 +78,10 @@
     color: #ffffff;
   }
 
-  .button.-size-small {
-    height: 32px;
-  }
-
-  .button.-icon-right {
-    text-align: left;
-    padding: 0 20px;
-  }
-
-  .button.-icon-right > .icon {
-    margin-left: 10px;
-  }
-
-  .button.-icon-left {
-    text-align: right;
-    padding: 0 20px;
-  }
-
-  .button.-icon-left > .icon {
-    margin-right: 10px;
-  }
-
-  .button.-icon-center {
-    padding: 0 20px;
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 20px;
+    fill: var(--text-color);
   }
 </style>
