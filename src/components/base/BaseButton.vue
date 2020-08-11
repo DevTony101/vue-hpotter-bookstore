@@ -37,7 +37,8 @@
     text-align: center;
     font-weight: 600;
     white-space: nowrap;
-    transition: all 0.2s linear;
+    transition: background-color 500ms ease-in-out, color 500ms ease-in-out,
+      transform 0.2s linear;
   }
 
   .button:hover {
