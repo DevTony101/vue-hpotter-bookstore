@@ -1,19 +1,19 @@
 <template>
   <div class="card rounded">
     <section>
-      <div class="info">
+      <div class="info" :data-id="id">
         <div>
-          <h1>Harry Potter y la Piedra Filososal</h1>
+          <h1>{{ title }}</h1>
           <div style="display: flex">
             <p id="cantidad">Cantidad:</p>
             <div class="quantity">
-              <input type="number" min="1" max="9" />
+              <input v-model.number="quantity" type="number" min="1" max="9" />
             </div>
           </div>
-          <p>Precio: $58.000</p>
+          <p>Precio: ${{ price }}</p>
         </div>
         <div class="purchase-info">
-          <p>Precio Total: $58.000</p>
+          <p>Precio Total: ${{ total }}</p>
           <BaseButton>
             <template>
               <BaseIcon class="icon" icon-name="trash" />
@@ -27,8 +27,49 @@
 </template>
 
 <script>
+  import { mapActions, mapGetters } from "vuex";
+
   export default {
     name: "BookInfo",
+    props: {
+      id: {
+        type: String,
+        required: true,
+      },
+      title: {
+        type: String,
+        required: true,
+      },
+      q: {
+        type: Number,
+        required: true,
+      },
+      price: {
+        type: String,
+        required: true,
+      },
+    },
+    data: function() {
+      return {
+        quantity: this.q,
+      };
+    },
+    methods: mapActions("books", ["updateTotal", "updateCart"]),
+    computed: {
+      ...mapGetters("books", ["getById"]),
+      total: function() {
+        return parseInt(this.quantity || 0) * parseInt(this.price);
+      },
+    },
+    watch: {
+      // eslint-disable-next-line no-unused-vars
+      quantity: function(newValue, oldValue) {
+        const book = this.getById(this.id);
+        book.quantity = newValue || 0;
+        console.log(book);
+        this.updateCart(book).then(() => this.updateTotal());
+      },
+    },
   };
 </script>
 

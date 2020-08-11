@@ -4,13 +4,19 @@
       <h1>Carrito de Compras</h1>
       <div class="cart" v-if="!cartIsEmpty">
         <div>
-          <BookInfo></BookInfo>
-          <BookInfo></BookInfo>
+          <BookInfo
+            v-for="book in cart"
+            :key="book.id"
+            :id="book.id"
+            :title="book.title"
+            :q="book.quantity"
+            :price="book.price"
+          ></BookInfo>
         </div>
         <div class="purchase-info">
           <div style="text-align: center">
             <p id="msg-total">Valor Total de la Compra:</p>
-            <p id="price">$132.000</p>
+            <p id="price">${{ totalPrice }}</p>
             <BaseButton buttonClass="purchase-button">
               <template>
                 Confirmar Compra
@@ -28,12 +34,19 @@
 
 <script>
   import BookInfo from "../components/BookInfo";
-  import { mapGetters } from "vuex";
+  import { mapState, mapGetters, mapActions } from "vuex";
 
   export default {
     name: "Cart",
+    mounted() {
+      this.updateTotal();
+    },
     components: { BookInfo },
-    computed: mapGetters("books", ["cartIsEmpty"]),
+    methods: mapActions("books", ["updateTotal"]),
+    computed: {
+      ...mapState("books", ["cart", "totalPrice"]),
+      ...mapGetters("books", ["cartIsEmpty"]),
+    },
   };
 </script>
 
