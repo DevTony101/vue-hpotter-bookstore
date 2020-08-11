@@ -1,13 +1,13 @@
 <template>
   <div>
     <section class="main-section">
-      <BookCard></BookCard>
-      <BookCard></BookCard>
-      <BookCard></BookCard>
-      <BookCard></BookCard>
-      <BookCard></BookCard>
-      <BookCard></BookCard>
-      <BookCard></BookCard>
+      <BookCard id="1"></BookCard>
+      <BookCard id="2"></BookCard>
+      <BookCard id="3"></BookCard>
+      <BookCard id="4"></BookCard>
+      <BookCard id="5"></BookCard>
+      <BookCard id="6"></BookCard>
+      <BookCard id="7"></BookCard>
     </section>
   </div>
 </template>
