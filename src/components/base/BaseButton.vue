@@ -91,5 +91,6 @@
     display: initial;
     font-size: large;
     font-weight: bolder;
+    background-color: var(--button-color-purchase);
   }
 </style>
