@@ -33,6 +33,7 @@
     background-color: var(--primary-variant);
     padding: 1rem 1rem;
     transition: background 500ms ease-in-out, color 1000ms ease-in-out;
+    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.2);
   }
 
   .book-info {
