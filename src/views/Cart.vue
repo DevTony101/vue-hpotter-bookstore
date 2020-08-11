@@ -2,7 +2,7 @@
   <div>
     <div class="main-section">
       <h1>Carrito de Compras</h1>
-      <div class="cart">
+      <div class="cart" v-if="!cartIsEmpty">
         <div>
           <BookInfo></BookInfo>
           <BookInfo></BookInfo>
@@ -19,15 +19,21 @@
           </div>
         </div>
       </div>
+      <div v-else>
+        <p id="msg-empty">Oops! Parece que tu carrito de compras está vacío.</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
   import BookInfo from "../components/BookInfo";
+  import { mapGetters } from "vuex";
+
   export default {
     name: "Cart",
     components: { BookInfo },
+    computed: mapGetters("books", ["cartIsEmpty"]),
   };
 </script>
 
@@ -64,5 +70,12 @@
   #price {
     font-size: xx-large;
     font-weight: bold;
+  }
+
+  #msg-empty {
+    font-size: xx-large;
+    text-align: center;
+    color: gray;
+    margin-top: 50px;
   }
 </style>

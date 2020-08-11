@@ -24,3 +24,9 @@ export const actions = {
     }
   },
 };
+
+export const getters = {
+  cartIsEmpty: function(state) {
+    return state.cart.length === 0;
+  },
+};
