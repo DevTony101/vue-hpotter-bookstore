@@ -1,8 +1,10 @@
 <template>
   <li class="nav-item">
-    <a href="#" class="icon-button" v-on="listeners">
-      <BaseIcon :iconName="icon" :class="{ open: isParentMenu && open }" />
-    </a>
+    <router-link :to="link">
+      <a class="icon-button" v-on="listeners">
+        <BaseIcon :iconName="icon" :class="{ open: isParentMenu && open }" />
+      </a>
+    </router-link>
     <slot v-if="open" />
   </li>
 </template>
@@ -16,6 +18,10 @@
     },
     props: {
       icon: {
+        type: String,
+        required: true,
+      },
+      link: {
         type: String,
         required: true,
       },

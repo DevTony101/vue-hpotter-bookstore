@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <Navbar brand="Harry Books - Tienda Online">
-      <NavItem icon="plus" />
-      <NavItem icon="bell" />
-      <NavItem :icon="icon" @click="toggleTheme" />
-      <NavItem icon="caret">
+      <NavItem icon="plus" link="/" />
+      <NavItem icon="bell" link="/" />
+      <NavItem :icon="icon" link="/" @click="toggleTheme" />
+      <NavItem icon="caret" link="/">
         <DropdownMenu />
       </NavItem>
     </Navbar>
