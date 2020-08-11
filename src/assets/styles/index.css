@@ -1,5 +1,5 @@
 @import "./navbar.css";
-/*@import "./scrollbar.css";*/
+@import "./scrollbar.css";
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 body {
