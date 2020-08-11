@@ -62,7 +62,7 @@
   }
 
   .info {
-    width: 710px;
+    width: 940px;
     display: flex;
     justify-content: space-between;
   }

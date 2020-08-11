@@ -6,12 +6,18 @@
         <div>
           <BookInfo></BookInfo>
           <BookInfo></BookInfo>
-          <BookInfo></BookInfo>
-          <BookInfo></BookInfo>
-          <BookInfo></BookInfo>
-          <BookInfo></BookInfo>
         </div>
-        <div class="card"></div>
+        <div class="purchase-info">
+          <div style="text-align: center">
+            <p id="msg-total">Valor Total de la Compra:</p>
+            <p id="price">$132.000</p>
+            <BaseButton buttonClass="purchase-button">
+              <template>
+                Confirmar Compra
+              </template>
+            </BaseButton>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -34,21 +40,29 @@
   .cart {
     display: grid;
     column-count: 2;
-    grid-template-columns: 750px auto;
+    grid-template-columns: 1000px auto;
     column-gap: 2rem;
     margin-top: 40px;
   }
 
-  .rounded {
-    border-radius: 1rem;
+  .purchase-info p {
+    color: var(--text-color);
+    font-size: x-large;
   }
 
-  .card {
-    margin: 0 0 30px 0;
-    display: inline-flex;
-    background-color: var(--primary-variant);
-    padding: 0 1rem;
-    transition: background 500ms ease-in-out, color 1000ms ease-in-out;
-    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.2);
+  .purchase-info {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+  }
+
+  #msg-total {
+    color: lightgray;
+    margin: 0;
+  }
+
+  #price {
+    font-size: xx-large;
+    font-weight: bold;
   }
 </style>
