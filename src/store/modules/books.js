@@ -11,12 +11,18 @@ export const mutations = {
   REMOVE_FROM_CART: function(state, index) {
     state.cart.splice(index, 1);
   },
+  RESTORE_CART: function(state) {
+    state.cart = [];
+  },
   UPDATE_TOTAL: function(state, total) {
     state.totalPrice = total;
   },
 };
 
 export const actions = {
+  restoreCart: function({ commit }) {
+    commit("RESTORE_CART");
+  },
   addToCart: function({ commit, getters, dispatch }, book) {
     if (book) {
       let aux = getters.getById(book.id);
