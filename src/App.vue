@@ -17,8 +17,12 @@
   import NavItem from "./components/NavItem";
   import DropdownMenu from "./components/DropdownMenu";
   import { mapActions } from "vuex";
+
   export default {
     name: "App",
+    mounted() {
+      this.toggleTheme();
+    },
     components: { DropdownMenu, NavItem, Navbar },
     methods: mapActions(["toggleTheme"]),
     computed: {

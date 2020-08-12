@@ -9,7 +9,7 @@ export default new Vuex.Store({
     books,
   },
   state: {
-    colorTheme: "light",
+    colorTheme: window.localStorage.getItem("hpbookstore-theme") ?? "light",
   },
   mutations: {
     SET_COLOR_THEME: function(state, theme) {
@@ -18,12 +18,15 @@ export default new Vuex.Store({
   },
   actions: {
     toggleTheme: function({ state, commit }) {
+      console.log(state.colorTheme);
       if (state.colorTheme === "light") {
         commit("SET_COLOR_THEME", "dark");
         document.body.classList.replace("light", "dark");
+        window.localStorage.setItem("hpbookstore-theme", "light");
       } else if (state.colorTheme === "dark") {
         commit("SET_COLOR_THEME", "light");
         document.body.classList.replace("dark", "light");
+        window.localStorage.setItem("hpbookstore-theme", "dark");
       }
     },
   },
