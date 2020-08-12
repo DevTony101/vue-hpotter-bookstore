@@ -90,7 +90,7 @@
   }
 
   #msg-total {
-    color: lightgray;
+    color: var(--word-emphasis);
     margin: 0;
   }
 
@@ -102,7 +102,7 @@
   #msg-empty {
     font-size: xx-large;
     text-align: center;
-    color: gray;
+    color: var(--word-emphasis);
     margin-top: 50px;
   }
 </style>

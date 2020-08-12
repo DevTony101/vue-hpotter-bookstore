@@ -49,6 +49,7 @@ body {
   --selected: var(--blue);
   --button-color: var(--red-light);
   --button-color-success: var(--green-light);
+  --word-emphasis: lightgray;
   --shadow: 0 0 16px 0 rgba(255, 255, 255, 0.10);
 }
 
@@ -62,6 +63,7 @@ body {
   --button-color: var(--red);
   --selected: var(--blue-dark);
   --button-color-success: var(--green);
+  --word-emphasis: slategray;
   --shadow: 0 0 16px 0 rgba(0, 0, 0, 0.20);
 }
 
