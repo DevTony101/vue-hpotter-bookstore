@@ -86,11 +86,14 @@
     fill: var(--text-color);
   }
 
-  .purchase-button {
+  .action-button {
     width: 400px;
     display: initial;
     font-size: large;
     font-weight: bolder;
-    background-color: var(--button-color-purchase);
+  }
+
+  .success {
+    background-color: var(--button-color-success);
   }
 </style>

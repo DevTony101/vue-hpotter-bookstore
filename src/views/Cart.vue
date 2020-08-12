@@ -15,13 +15,20 @@
         </div>
         <div class="purchase-info">
           <div style="text-align: center">
-            <p id="msg-total">Valor Total de la Compra:</p>
+            <p id="msg-total">Valor Total:</p>
             <p id="price">${{ totalPrice }}</p>
-            <BaseButton buttonClass="purchase-button">
-              <template>
-                Confirmar Compra
-              </template>
-            </BaseButton>
+            <div class="action-buttons">
+              <BaseButton buttonClass="action-button success">
+                <template>
+                  Confirmar Compra
+                </template>
+              </BaseButton>
+              <BaseButton buttonClass="action-button">
+                <template>
+                  Cancelar Compra
+                </template>
+              </BaseButton>
+            </div>
           </div>
         </div>
       </div>
@@ -73,6 +80,13 @@
     display: flex;
     flex-direction: column;
     justify-items: center;
+  }
+
+  .action-buttons {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   #msg-total {
