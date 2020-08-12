@@ -31,6 +31,7 @@
     mounted() {
       if (this.showSuccess) {
         this.$swal(
+          "Listo!",
           "Hemos recibido su solicitud y será procesada por nuestros agentes. Gracias por su compra.",
           {
             icon: "success",

@@ -10,7 +10,7 @@
               <input v-model.number="quantity" type="number" min="1" max="9" />
             </div>
           </div>
-          <p>Precio: ${{ price }}</p>
+          <p>Precio Unitario: ${{ price }}</p>
         </div>
         <div class="purchase-info">
           <p>Precio Total: ${{ total }}</p>

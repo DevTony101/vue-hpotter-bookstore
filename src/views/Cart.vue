@@ -15,7 +15,7 @@
         </div>
         <div class="purchase-info">
           <div style="text-align: center">
-            <p id="msg-total">Valor Total:</p>
+            <p id="msg-total">Valor Total de Compra:</p>
             <p id="price">${{ totalPrice }}</p>
             <div class="action-buttons">
               <BaseButton buttonClass="action-button success" @click="confirm">
@@ -67,7 +67,7 @@
         }).then(willDelete => {
           if (willDelete) {
             this.restoreCart().then(() => {
-              this.$swal("Su compra se ha cancelado", {
+              this.$swal("Listo!", "Su compra se ha cancelado", {
                 icon: "success",
               });
             });
