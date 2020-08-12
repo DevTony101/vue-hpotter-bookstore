@@ -28,10 +28,11 @@ export const actions = {
       }
     }
   },
-  removeFromCart: function({ state, commit }, book) {
+  removeFromCart: function({ state, commit, dispatch }, book) {
     if (book) {
       const index = state.cart.findIndex(e => e.id === book.id);
       commit("REMOVE_FROM_CART", index);
+      dispatch("updateTotal");
     }
   },
   updateCart: function({ state }, book) {

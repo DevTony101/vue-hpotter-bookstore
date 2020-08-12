@@ -14,7 +14,7 @@
         </div>
         <div class="purchase-info">
           <p>Precio Total: ${{ total }}</p>
-          <BaseButton>
+          <BaseButton @click="deleteBook">
             <template>
               <BaseIcon class="icon" icon-name="trash" />
               Eliminar del Carrito
@@ -54,7 +54,12 @@
         quantity: this.q,
       };
     },
-    methods: mapActions("books", ["updateTotal", "updateCart"]),
+    methods: {
+      ...mapActions("books", ["updateTotal", "updateCart", "removeFromCart"]),
+      deleteBook: function() {
+        this.removeFromCart({ id: this.id });
+      },
+    },
     computed: {
       ...mapGetters("books", ["getById"]),
       total: function() {
