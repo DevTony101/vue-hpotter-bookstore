@@ -78,9 +78,9 @@
       add: function() {
         this.addToCart({
           id: this.id,
-          title: "Harry Potter y la Piedra Filosofal",
+          title: this.title,
           quantity: this.quantity,
-          price: "58000",
+          price: this.price,
         });
       },
     },
