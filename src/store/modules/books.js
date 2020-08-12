@@ -31,7 +31,7 @@ export const actions = {
   },
   addToCart: function({ commit, getters, dispatch }, book) {
     if (book) {
-      let aux = getters.getById(book.id);
+      let aux = getters.getBookInCartById(book.id);
       if (aux) {
         book.quantity += parseInt(aux.quantity);
         dispatch("updateCart", book);
@@ -68,13 +68,22 @@ export const actions = {
       })
       .catch(console.error);
   },
+  getBookById: function(context, id) {
+    return BookService.getBook(id).then(response => response.data);
+  },
+  putBook: function(context, book) {
+    // Just an action to update the book state in the server
+    return BookService.putBook(book)
+      .then(() => console.log(`Book ${book.title} updated successfully`))
+      .catch(console.error);
+  },
 };
 
 export const getters = {
   cartIsEmpty: function(state) {
     return state.cart.length === 0;
   },
-  getById: state => id => {
+  getBookInCartById: state => id => {
     return state.cart.find(book => book.id === id);
   },
 };
