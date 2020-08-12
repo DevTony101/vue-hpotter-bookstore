@@ -33,7 +33,7 @@
     name: "BookInfo",
     props: {
       id: {
-        type: String,
+        type: Number,
         required: true,
       },
       title: {

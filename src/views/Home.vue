@@ -1,21 +1,40 @@
 <template>
   <div>
     <section class="main-section">
-      <BookCard id="1"></BookCard>
-      <BookCard id="2"></BookCard>
-      <BookCard id="3"></BookCard>
-      <BookCard id="4"></BookCard>
-      <BookCard id="5"></BookCard>
-      <BookCard id="6"></BookCard>
-      <BookCard id="7"></BookCard>
+      <BookCard
+        v-for="book in books"
+        :key="book.id"
+        :id="book.id"
+        :title="book.title"
+        :description="book.description"
+        :price="book.price"
+        :cover="book.cover"
+        :initial-quantity="book.quantity"
+      ></BookCard>
     </section>
   </div>
 </template>
 
 <script>
   import BookCard from "../components/BookCard";
+  import { mapState } from "vuex";
+  import store from "../store/index";
+
+  function getBooks(next) {
+    store.dispatch("books/fetchBooks").then(() => {
+      next();
+    });
+  }
+
   export default {
     components: { BookCard },
+    computed: mapState("books", ["books"]),
+    beforeRouteEnter(routeTo, routeFrom, next) {
+      getBooks(next);
+    },
+    beforeRouteUpdate(routeTo, routeFrom, next) {
+      getBooks(next);
+    },
   };
 </script>
 

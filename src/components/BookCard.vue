@@ -3,28 +3,20 @@
     <div class="book-cover">
       <img
         class="rounded book-cover"
-        src="../assets/demo.jpg"
+        :src="cover"
         alt="Book Cover"
         width="180"
         height="250"
       />
     </div>
     <div class="book-info">
-      <h1>Harry Potter y la Piedra Filosofal</h1>
-      <p class="description">
-        El día de su cumpleaños, Harry Potter descubre que es hijo de dos
-        conocidos hechiceros, de los que ha heredado poderes mágicos. Debe
-        asistir a una famosa escuela de magia y hechicería, donde entabla una
-        amistad con dos jóvenes que se convertirán en sus compañeros de
-        aventura. Durante su primer año en Hogwarts, descubre que un malévolo y
-        poderoso mago llamado Voldemort está en busca de una piedra filosofal
-        que alarga la vida de quien la posee.
-      </p>
+      <h1>{{ title }}</h1>
+      <p class="description">{{ description }}</p>
       <hr />
       <div class="purchase-info">
         <div>
-          <p>Cantidad Disponible: 500</p>
-          <p>Precio: $58.000</p>
+          <p>Cantidad Disponible: {{ initialQuantity }}</p>
+          <p>Precio: ${{ price }}</p>
         </div>
         <div class="add-to-cart">
           <div class="quantity">
@@ -51,6 +43,27 @@
     components: { BaseIcon },
     props: {
       id: {
+        type: Number,
+        required: true,
+      },
+      title: {
+        type: String,
+        required: true,
+      },
+      description: {
+        type: String,
+        required: true,
+      },
+      initialQuantity: {
+        // Quantity prop
+        type: String,
+        required: true,
+      },
+      price: {
+        type: String,
+        required: true,
+      },
+      cover: {
         type: String,
         required: true,
       },
