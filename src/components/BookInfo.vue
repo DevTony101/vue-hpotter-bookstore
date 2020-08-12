@@ -7,7 +7,12 @@
           <div style="display: flex">
             <p id="cantidad">Cantidad:</p>
             <div class="quantity">
-              <input v-model.number="quantity" type="number" min="1" max="9" />
+              <input
+                v-model.number="quantity"
+                type="number"
+                min="1"
+                :max="max"
+              />
             </div>
           </div>
           <p>Precio Unitario: ${{ price }}</p>
@@ -48,6 +53,10 @@
         type: String,
         required: true,
       },
+      max: {
+        type: String,
+        required: true,
+      },
     },
     data: function() {
       return {
@@ -71,7 +80,6 @@
       quantity: function(newValue, oldValue) {
         const book = this.getBookInCartById(this.id);
         book.quantity = newValue || 0;
-        console.log(book);
         this.updateCart(book).then(() => this.updateTotal());
       },
     },

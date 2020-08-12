@@ -11,6 +11,7 @@
             :title="book.title"
             :q="book.quantity"
             :price="book.price"
+            :max="book.initialQuantity"
           ></BookInfo>
         </div>
         <div class="purchase-info">

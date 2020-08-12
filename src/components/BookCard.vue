@@ -22,7 +22,12 @@
         </div>
         <div class="add-to-cart" v-if="!isSoldOut">
           <div class="quantity">
-            <input v-model.number="quantity" type="number" min="1" max="9" />
+            <input
+              v-model.number="quantity"
+              type="number"
+              min="1"
+              :max="initialQuantity"
+            />
           </div>
           <BaseButton @click="add">
             <template>
@@ -81,6 +86,7 @@
         this.addToCart({
           id: this.id,
           title: this.title,
+          initialQuantity: this.initialQuantity,
           quantity: this.quantity,
           price: this.price,
         });
