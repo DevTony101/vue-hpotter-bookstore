@@ -15,10 +15,12 @@
       <hr />
       <div class="purchase-info">
         <div>
-          <p>Cantidad Disponible: {{ initialQuantity }}</p>
+          <p>
+            Cantidad Disponible: {{ isSoldOut ? "Agotado" : initialQuantity }}
+          </p>
           <p>Precio: ${{ price }}</p>
         </div>
-        <div class="add-to-cart">
+        <div class="add-to-cart" v-if="!isSoldOut">
           <div class="quantity">
             <input v-model.number="quantity" type="number" min="1" max="9" />
           </div>
@@ -82,6 +84,11 @@
           quantity: this.quantity,
           price: this.price,
         });
+      },
+    },
+    computed: {
+      isSoldOut: function() {
+        return !parseInt(this.initialQuantity);
       },
     },
   };
