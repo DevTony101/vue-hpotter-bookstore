@@ -61,7 +61,7 @@
       },
     },
     computed: {
-      ...mapGetters("books", ["getById"]),
+      ...mapGetters("books", ["getBookInCartById"]),
       total: function() {
         return parseInt(this.quantity || 0) * parseInt(this.price);
       },
@@ -69,7 +69,7 @@
     watch: {
       // eslint-disable-next-line no-unused-vars
       quantity: function(newValue, oldValue) {
-        const book = this.getById(this.id);
+        const book = this.getBookInCartById(this.id);
         book.quantity = newValue || 0;
         console.log(book);
         this.updateCart(book).then(() => this.updateTotal());
