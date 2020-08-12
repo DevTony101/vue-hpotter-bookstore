@@ -18,12 +18,12 @@
             <p id="msg-total">Valor Total:</p>
             <p id="price">${{ totalPrice }}</p>
             <div class="action-buttons">
-              <BaseButton buttonClass="action-button success">
+              <BaseButton buttonClass="action-button success" @click="confirm">
                 <template>
                   Confirmar Compra
                 </template>
               </BaseButton>
-              <BaseButton buttonClass="action-button">
+              <BaseButton buttonClass="action-button" @click="cancel">
                 <template>
                   Cancelar Compra
                 </template>
@@ -49,7 +49,41 @@
       this.updateTotal();
     },
     components: { BookInfo },
-    methods: mapActions("books", ["updateTotal"]),
+    methods: {
+      ...mapActions("books", ["updateTotal", "restoreCart"]),
+      cancel: function() {
+        this.$swal({
+          title: "¿Está Seguro?",
+          text: "Esta acción vaciará su carrito de compra!",
+          icon: "warning",
+          buttons: ["No, mantener libros", "Si, cancelar compra"],
+          dangerMode: true,
+        }).then(willDelete => {
+          if (willDelete) {
+            this.restoreCart().then(() => {
+              this.$swal("Su compra se ha cancelado", {
+                icon: "success",
+              });
+            });
+          }
+        });
+      },
+      confirm: function() {
+        this.$swal({
+          title: "¿Está Seguro?",
+          icon: "warning",
+          buttons: ["No, quiero seguir buscando", "Si, confirmar compra"],
+        }).then(willDelete => {
+          if (willDelete) {
+            this.restoreCart().then(() => {
+              this.$swal("Su compra se ha cancelado", {
+                icon: "success",
+              });
+            });
+          }
+        });
+      },
+    },
     computed: {
       ...mapState("books", ["cart", "totalPrice"]),
       ...mapGetters("books", ["cartIsEmpty"]),
