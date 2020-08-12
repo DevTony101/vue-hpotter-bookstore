@@ -50,7 +50,13 @@
     },
     components: { BookInfo },
     methods: {
-      ...mapActions("books", ["updateTotal", "restoreCart"]),
+      ...mapActions("books", [
+        "updateTotal",
+        "restoreCart",
+        "putBook",
+        "getBookById",
+        "fetchBooks",
+      ]),
       cancel: function() {
         this.$swal({
           title: "¿Está Seguro?",
@@ -73,11 +79,22 @@
           title: "¿Está Seguro?",
           icon: "warning",
           buttons: ["No, quiero seguir buscando", "Si, confirmar compra"],
-        }).then(willDelete => {
-          if (willDelete) {
+        }).then(confirm => {
+          if (confirm) {
+            for (let book of this.cart) {
+              this.getBookById(book.id).then(original => {
+                this.putBook({
+                  ...original,
+                  quantity: (
+                    parseInt(original.quantity) - parseInt(book.quantity)
+                  ).toString(),
+                }).then(() => this.fetchBooks());
+              });
+            }
             this.restoreCart().then(() => {
-              this.$swal("Su compra se ha cancelado", {
-                icon: "success",
+              this.$router.push({
+                name: "Home",
+                params: { showSuccess: true },
               });
             });
           }
@@ -86,7 +103,7 @@
     },
     computed: {
       ...mapState("books", ["cart", "totalPrice"]),
-      ...mapGetters("books", ["cartIsEmpty"]),
+      ...mapGetters("books", ["getBookInCartById", "cartIsEmpty"]),
     },
   };
 </script>

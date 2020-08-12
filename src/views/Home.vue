@@ -28,6 +28,22 @@
 
   export default {
     components: { BookCard },
+    mounted() {
+      if (this.showSuccess) {
+        this.$swal(
+          "Hemos recibido su solicitud y será procesada por nuestros agentes. Gracias por su compra.",
+          {
+            icon: "success",
+          }
+        );
+      }
+    },
+    props: {
+      showSuccess: {
+        type: Boolean,
+        default: false,
+      },
+    },
     computed: mapState("books", ["books"]),
     beforeRouteEnter(routeTo, routeFrom, next) {
       getBooks(next);
