@@ -48,7 +48,7 @@ body {
   --text-color: var(--gray-200);
   --selected: var(--blue);
   --button-color: var(--red-light);
-  --button-color-purchase: var(--green-light);
+  --button-color-success: var(--green-light);
   --shadow: 0 0 16px 0 rgba(255, 255, 255, 0.10);
 }
 
@@ -61,7 +61,7 @@ body {
   --text-color: var(--gray-900);
   --button-color: var(--red);
   --selected: var(--blue-dark);
-  --button-color-purchase: var(--green);
+  --button-color-success: var(--green);
   --shadow: 0 0 16px 0 rgba(0, 0, 0, 0.20);
 }
 
