@@ -1,5 +1,8 @@
+import BookService from "../../services/BookService";
+
 export const namespaced = true;
 export const state = {
+  books: [],
   cart: [],
   totalPrice: 0,
 };
@@ -16,6 +19,9 @@ export const mutations = {
   },
   UPDATE_TOTAL: function(state, total) {
     state.totalPrice = total;
+  },
+  SET_BOOKS: function(state, books) {
+    state.books = [...books];
   },
 };
 
@@ -54,6 +60,13 @@ export const actions = {
         return a + parseInt(b.quantity) * parseInt(b.price);
       }, 0)
     );
+  },
+  fetchBooks: function({ commit }) {
+    return BookService.getBooks()
+      .then(response => {
+        commit("SET_BOOKS", response.data);
+      })
+      .catch(console.error);
   },
 };
 
