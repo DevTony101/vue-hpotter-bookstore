@@ -5,8 +5,11 @@ import store from "./store";
 import upperFirst from "lodash/upperFirst";
 import camelCase from "lodash/camelCase";
 import VueSwal from "vue-swal";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 
 Vue.use(VueSwal);
+NProgress.configure({ showSpinner: false });
 
 Vue.config.productionTip = false;
 
