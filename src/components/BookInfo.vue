@@ -116,7 +116,7 @@
   }
 
   .info {
-    width: 940px;
+    width: 780px;
     display: flex;
     justify-content: space-between;
   }

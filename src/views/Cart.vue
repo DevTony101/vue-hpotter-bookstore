@@ -118,7 +118,7 @@
   .cart {
     display: grid;
     column-count: 2;
-    grid-template-columns: 1000px auto;
+    grid-template-columns: 840px auto;
     column-gap: 2rem;
     margin-top: 40px;
   }
