@@ -18,7 +18,6 @@ export default new Vuex.Store({
   },
   actions: {
     toggleTheme: function({ state, commit }) {
-      console.log(state.colorTheme);
       if (state.colorTheme === "light") {
         commit("SET_COLOR_THEME", "dark");
         document.body.classList.replace("light", "dark");
