@@ -1,12 +1,11 @@
 import axios from "axios";
 
 export const apiClient = axios.create({
-  baseURL: "http://localhost:8080/api/", // This is the base url that all the api calls are going to use
+  baseURL: "https://spring-hpotter-bookstore.herokuapp.com/api/",
   withCredentials: false,
   headers: {
-    // Authentication and Configuration
     Accept: "application/json",
     "Content-Type": "application/json",
   },
-  timeout: 10000, //ms which is 10seconds
+  timeout: 10000,
 });
