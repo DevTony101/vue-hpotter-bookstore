@@ -64,7 +64,8 @@ export const actions = {
   fetchBooks: function({ commit }) {
     return BookService.getBooks()
       .then(response => {
-        commit("SET_BOOKS", response.data);
+        let data = response.data.sort((a, b) => a.id - b.id);
+        commit("SET_BOOKS", data);
       })
       .catch(console.error);
   },
