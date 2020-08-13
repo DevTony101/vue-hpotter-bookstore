@@ -48,8 +48,8 @@
 
 .icon-button svg, .icon-svg {
   fill: var(--text-color);
-  width: 20px;
-  height: 20px;
+  width: calc(var(--nav-size) * 0.35);
+  height: calc(var(--nav-size) * 0.35);
 }
 
 .-fill-white {
@@ -64,7 +64,7 @@
 
 .dropdown {
   position: absolute;
-  top: 58px;
+  top: 66px;
   width: 300px;
   transform: translateX(-45%);
   background-color: var(--primary-variant);

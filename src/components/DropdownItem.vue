@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/">
+  <router-link :to="this.$route.path">
     <a class="menu-item" @click="goToMenu">
       <slot name="lefticon" />
       <slot />
@@ -18,11 +18,15 @@
     },
     methods: {
       goToMenu: function() {
-        console.log("dsdsd");
         if (this.childMenu) this.$emit("menuchange", this.childMenu);
       },
     },
   };
 </script>
 
-<style scoped></style>
+<style scoped>
+  svg {
+    width: 10px;
+    height: 10px;
+  }
+</style>
