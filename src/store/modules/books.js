@@ -62,21 +62,17 @@ export const actions = {
     );
   },
   fetchBooks: function({ commit }) {
-    return BookService.getBooks()
-      .then(response => {
-        let data = response.data.sort((a, b) => a.id - b.id);
-        commit("SET_BOOKS", data);
-      })
-      .catch(console.error);
+    return BookService.getBooks().then(response => {
+      let data = response.data.sort((a, b) => a.id - b.id);
+      commit("SET_BOOKS", data);
+    });
   },
   getBookById: function(context, id) {
     return BookService.getBook(id).then(response => response.data);
   },
   putBook: function(context, book) {
     // Just an action to update the book state in the server
-    return BookService.putBook(book)
-      .then(() => console.log(`Book ${book.title} updated successfully`))
-      .catch(console.error);
+    return BookService.putBook(book);
   },
 };
 
