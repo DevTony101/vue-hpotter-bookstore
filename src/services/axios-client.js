@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const apiClient = axios.create({
+export const AxiosClient = axios.create({
   baseURL: "https://spring-hpotter-bookstore.herokuapp.com/api/",
   withCredentials: false,
   headers: {
