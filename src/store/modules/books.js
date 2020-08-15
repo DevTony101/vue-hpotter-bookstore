@@ -3,7 +3,7 @@ import BookService from "../../services/BookService";
 export const namespaced = true;
 export const state = {
   books: [],
-  cart: [],
+  cart: JSON.parse(window.localStorage.getItem("hpbookstore-cart")) ?? [],
   totalPrice: 0,
 };
 
@@ -38,6 +38,7 @@ export const actions = {
       } else {
         commit("ADD_TO_CART", book);
       }
+      dispatch("persistCart");
     }
   },
   removeFromCart: function({ state, commit, dispatch }, book) {
@@ -45,6 +46,7 @@ export const actions = {
       const index = state.cart.findIndex(e => e.id === book.id);
       commit("REMOVE_FROM_CART", index);
       dispatch("updateTotal");
+      dispatch("persistCart");
     }
   },
   updateCart: function({ state }, book) {
@@ -60,6 +62,9 @@ export const actions = {
         return a + parseInt(b.quantity) * parseInt(b.price);
       }, 0)
     );
+  },
+  persistCart: function({ state }) {
+    window.localStorage.setItem("hpbookstore-cart", JSON.stringify(state.cart));
   },
   fetchBooks: function({ commit }) {
     return BookService.getBooks().then(response => {

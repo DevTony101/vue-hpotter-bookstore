@@ -57,6 +57,7 @@
         "putBook",
         "getBookById",
         "fetchBooks",
+        "persistCart",
       ]),
       cancel: function() {
         this.$swal({
@@ -68,8 +69,10 @@
         }).then(willDelete => {
           if (willDelete) {
             this.restoreCart().then(() => {
-              this.$swal("Listo!", "Su compra se ha cancelado", {
-                icon: "success",
+              this.persistCart().then(() => {
+                this.$swal("Listo!", "Su compra se ha cancelado", {
+                  icon: "success",
+                });
               });
             });
           }
@@ -93,9 +96,11 @@
               });
             }
             this.restoreCart().then(() => {
-              this.$router.push({
-                name: "Home",
-                params: { showSuccess: true },
+              this.persistCart().then(() => {
+                this.$router.push({
+                  name: "Home",
+                  params: { showSuccess: true },
+                });
               });
             });
           }

@@ -64,7 +64,12 @@
       };
     },
     methods: {
-      ...mapActions("books", ["updateTotal", "updateCart", "removeFromCart"]),
+      ...mapActions("books", [
+        "updateTotal",
+        "updateCart",
+        "removeFromCart",
+        "persistCart",
+      ]),
       deleteBook: function() {
         this.removeFromCart({ id: this.id });
       },
@@ -80,7 +85,9 @@
       quantity: function(newValue, oldValue) {
         const book = this.getBookInCartById(this.id);
         book.quantity = newValue || 0;
-        this.updateCart(book).then(() => this.updateTotal());
+        this.updateCart(book).then(() => {
+          this.updateTotal().then(() => this.persistCart());
+        });
       },
     },
   };
